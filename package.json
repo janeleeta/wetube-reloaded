@@ -7,7 +7,7 @@
     "url": "git+https://github.com/minnje97/wetube-reloaded.git"
   },
   "scripts": {
-    "dev": "nodemon -L --exec babel-node src/server.js"
+    "dev": "nodemon -L --exec babel-node src/init.js"
   },
   "author": "mj",
   "license": "ISC",
