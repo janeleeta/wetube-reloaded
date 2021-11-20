@@ -7,7 +7,8 @@
     "url": "git+https://github.com/minnje97/wetube-reloaded.git"
   },
   "scripts": {
-    "dev": "nodemon -L --exec babel-node src/init.js"
+    "dev": "nodemon -L --exec babel-node src/init.js",
+    "assets": "webpack --config webpack.config.js"
   },
   "author": "mj",
   "license": "ISC",
@@ -31,6 +32,9 @@
     "@babel/core": "^7.15.8",
     "@babel/node": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
-    "nodemon": "^2.0.14"
+    "babel-loader": "^8.2.3",
+    "nodemon": "^2.0.14",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
   }
 }
