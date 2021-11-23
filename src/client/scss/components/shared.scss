@@ -11,3 +11,17 @@
   gap: 50px;
   grid-template-columns: repeat(4, 1fr);
 }
+
+.auth-switch {
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 15px;
+  a {
+    border-bottom: 2px solid white;
+    padding: 4px 11px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-left: 10px;
+    font-size: 15px;
+  }
+}
