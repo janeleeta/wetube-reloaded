@@ -165,6 +165,12 @@ header .header__btn {
   align-items: center;
 }
 
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 footer {
   text-align: center;
   font-size: 12px;
@@ -292,6 +298,39 @@ input[type=submit],
 .profile__data {
   max-width: 420px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.profile__data img {
+  margin-bottom: 14px;
+}
+.profile__data h3 {
+  font-size: 18px;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.edit-profile__form label {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 3px 17px;
+}
+
+.edit-profile__password {
+  text-align: center;
+  margin-top: 50px;
+  border-bottom: 2px solid white;
+  padding: 4px 11px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 a {
