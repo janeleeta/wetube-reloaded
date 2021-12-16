@@ -7,13 +7,14 @@ form {
   border: 1px solid rgba($color: #fff, $alpha: 0.2);
 }
 
-input:not(input[type="range"]) {
+input:not(input[type="range"]),
+input[type="submit"] {
   all: unset;
   padding: 10px 17px;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  margin-bottom: 7px;
   background-color: black;
+  margin-bottom: 7px;
   font-size: 15px;
   color: white;
   width: 90%;
@@ -23,16 +24,24 @@ input:not(input[type="range"]) {
 }
 
 input[type="submit"],
-.social__btn {
+.social__btn,
+#startBtn {
   border-radius: 5px;
-  height: 20px;
-  padding: 10px 17px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  color: white;
-  background-color: $red;
+  padding: 12px 20px;
+  background-color: white;
+  color: rgba($color: $red, $alpha: 1);
   text-align: center;
-  font-weight: 600;
+  background-color: white !important;
+  color: rgba($color: $red, $alpha: 1) !important;
+  text-align: center !important;
   cursor: pointer;
   display: block;
-  margin: 10px 0px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
