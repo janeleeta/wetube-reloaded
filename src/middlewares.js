@@ -41,12 +41,14 @@ const s3ImageUploader = multerS3({
   s3: s3,
   bucket: "wetube2022/images",
   acl: "public-read",
+  contentType: multerS3.AUTO_CONTENT_TYPE,
 });
 
 const s3VideoUploader = multerS3({
   s3: s3,
   bucket: "wetube2022/videos",
   acl: "public-read",
+  contentType: multerS3.AUTO_CONTENT_TYPE,
 });
 
 export const avatarUpload = multer({
