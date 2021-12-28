@@ -8,6 +8,7 @@ import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 import { localsMiddleware } from "./middlewares";
 import apiRouter from "./routers/apiRouter";
+import cors from "cors";
 
 const app = express();
 const logger = morgan("dev");
@@ -39,5 +40,6 @@ app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);
 app.use("/api", apiRouter);
+app.use(cors());
 
 export default app;
