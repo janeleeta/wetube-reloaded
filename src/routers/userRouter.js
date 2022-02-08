@@ -8,6 +8,7 @@ import {
   postEdit,
   getChangePassword,
   postChangePassword,
+  deleteComment,
 } from "../controllers/userControllers";
 import {
   avatarUpload,
@@ -32,6 +33,8 @@ userRouter
 userRouter.get("/github/start", publicOnlyMiddleware, startGithubLogin);
 userRouter.get("/github/finish", publicOnlyMiddleware, finishGithubLogin);
 
-userRouter.get("/:id", see);
+userRouter.get("/:id([0-9a-f]{24})", see);
+
+userRouter.get("/:id([0-9a-f]{24})/delete-comment", deleteComment);
 
 export default userRouter;

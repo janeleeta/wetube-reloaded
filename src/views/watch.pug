@@ -41,6 +41,8 @@ block content
                 li.video__comment(data-id=comment.id)
                     i.fas.fa-comment
                     span  #{comment.text}
+                    if loggedIn
+                        a(href=`/users/${comment.id}/delete-comment`)  ❌
 
 
 block scripts
