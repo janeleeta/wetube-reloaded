@@ -1,6 +1,7 @@
 import Video from "../models/Video";
 import User from "../models/User";
 import Comment from "../models/Comment";
+import { text } from "express";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
@@ -156,19 +157,16 @@ export const createComment = async (req, res) => {
 export const deleteComment = async (req, res) => {
   const {
     params: { id },
-  } = req;
-  const {
     session: {
       user: { _id },
     },
   } = req;
-  const videoId = videoContainer.dataset.id;
-  const user = await User.findById(_id);
+  const video = await Video.findById(id);
   const comment = await Comment.findById(id);
-  console.log(user, comment);
   if (String(_id) !== String(comment.owner)) {
-    req.flash("error", "Not authorized.");
+    req.flash("error", "Not authorized");
+    return res.status(403).redirect("/");
   }
-
-  return res.render("watch");
+  await Comment.findByIdAndDelete(id);
+  return res.redirect("/");
 };

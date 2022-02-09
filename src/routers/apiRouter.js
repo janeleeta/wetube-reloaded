@@ -1,5 +1,9 @@
 import express from "express";
-import { registerView, createComment } from "../controllers/videoControllers";
+import {
+  registerView,
+  createComment,
+  deleteComment,
+} from "../controllers/videoControllers";
 
 const apiRouter = express.Router();
 

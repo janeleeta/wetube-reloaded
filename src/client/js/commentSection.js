@@ -12,11 +12,12 @@ const addComment = (text, id) => {
   icon.className = "fas fa-comment";
   const span = document.createElement("span");
   span.innerText = ` ${text}`;
-  const span2 = document.createElement("span");
-  span2.innerText = "❌";
+  const a = document.createElement("a");
+  a.innerText = "❌";
+  a.href = `/api/videos/${id}/delete-comment`;
   newComment.appendChild(icon);
   newComment.appendChild(span);
-  newComment.appendChild(span2);
+  newComment.appendChild(a);
   videoComments.prepend(newComment);
 };
 
