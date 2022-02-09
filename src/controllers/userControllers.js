@@ -222,23 +222,3 @@ export const see = async (req, res) => {
     user,
   });
 };
-
-export const deleteComment = async (req, res) => {
-  const {
-    params: { id },
-  } = req;
-  const {
-    session: {
-      user: { _id },
-    },
-  } = req;
-  const videoId = videoContainer.dataset.id;
-  const user = await User.findById(_id);
-  const comment = await Comment.findById(id);
-  console.log(user, comment);
-  if (String(_id) !== String(comment.owner)) {
-    req.flash("error", "Not authorized.");
-  }
-
-  return res.render("watch");
-};
