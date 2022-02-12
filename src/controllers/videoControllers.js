@@ -161,12 +161,10 @@ export const deleteComment = async (req, res) => {
       user: { _id },
     },
   } = req;
-  const video = await Video.findById(id);
   const comment = await Comment.findById(id);
   if (String(_id) !== String(comment.owner)) {
     req.flash("error", "Not authorized");
     return res.status(403).redirect("/");
   }
   await Comment.findByIdAndDelete(id);
-  return res.redirect("/");
 };

@@ -1,12 +1,23 @@
 import { async } from "regenerator-runtime";
 
 const videoContainer = document.getElementById("videoContainer");
-const commentContainer = document.getElementById("commentContainer");
 const form = document.getElementById("commentForm");
-let videoComments = document.querySelector(".video__comments ul");
-let newComment = document.createElement("li");
+const videoComments = document.querySelector(".video__comments ul");
+const videoComment = document.getElementById("eachComment");
+
+const deleteCommentLive = async (event) => {
+  const commentId = String(event.target.parentElement.dataset.id);
+  const response = await fetch(`/api/videos/${commentId}/delete-comment`, {
+    method: "DELETE",
+  });
+  if (response.status === 200) {
+    const deleteOne = document.querySelector(`li[data-id="${commentId}"]`);
+    deleteOne.remove();
+  }
+};
 
 const addComment = (text, id) => {
+  const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
   const icon = document.createElement("i");
@@ -15,11 +26,14 @@ const addComment = (text, id) => {
   span.innerText = ` ${text}`;
   const a = document.createElement("a");
   a.innerText = "❌";
-  a.href = `/api/videos/${id}/delete-comment`;
+  //a.href = `/api/videos/${id}/delete-comment`;
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(a);
   videoComments.prepend(newComment);
+  if (a) {
+    a.addEventListener("click", deleteCommentLive);
+  }
 };
 
 const handleSubmit = async (event) => {
