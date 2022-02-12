@@ -1,11 +1,12 @@
 import { async } from "regenerator-runtime";
 
 const videoContainer = document.getElementById("videoContainer");
+const commentContainer = document.getElementById("commentContainer");
 const form = document.getElementById("commentForm");
+let videoComments = document.querySelector(".video__comments ul");
+let newComment = document.createElement("li");
 
 const addComment = (text, id) => {
-  const videoComments = document.querySelector(".video__comments ul");
-  const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
   const icon = document.createElement("i");
