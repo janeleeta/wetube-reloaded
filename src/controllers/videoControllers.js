@@ -162,9 +162,11 @@ export const deleteComment = async (req, res) => {
     },
   } = req;
   const comment = await Comment.findById(id);
+  const commentId = comment._id;
   if (String(_id) !== String(comment.owner)) {
     req.flash("error", "Not authorized");
     return res.status(403).redirect("/");
   }
-  await Comment.findByIdAndDelete(id);
+  await Comment.findByIdAndDelete(commentId);
+  return res.status(200).json();
 };

@@ -3,7 +3,6 @@ import { async } from "regenerator-runtime";
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
 const videoComments = document.querySelector(".video__comments ul");
-const videoComment = document.getElementById("eachComment");
 
 const deleteCommentLive = async (event) => {
   const commentId = String(event.target.parentElement.dataset.id);
@@ -13,6 +12,7 @@ const deleteCommentLive = async (event) => {
   if (response.status === 200) {
     const deleteOne = document.querySelector(`li[data-id="${commentId}"]`);
     deleteOne.remove();
+    await response.json();
   }
 };
 
@@ -26,14 +26,12 @@ const addComment = (text, id) => {
   span.innerText = ` ${text}`;
   const a = document.createElement("a");
   a.innerText = "❌";
+  a.addEventListener("click", deleteCommentLive);
   //a.href = `/api/videos/${id}/delete-comment`;
   newComment.appendChild(icon);
   newComment.appendChild(span);
   newComment.appendChild(a);
   videoComments.prepend(newComment);
-  if (a) {
-    a.addEventListener("click", deleteCommentLive);
-  }
 };
 
 const handleSubmit = async (event) => {
